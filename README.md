@@ -35,3 +35,14 @@ npm start
 - Go to `/admin` to add artist IDs
 - Artist IDs can be found in Spotify URLs (e.g., Steve Miller Band: `6QtGlUje9TIkLrgPZrESuk`)
 - Max 20 artists
+
+
+## Future Improvements
+
+- Improve UI (ideally using library like ant design)
+- Use a database for storing artists instead of json file
+- Add tests
+- Add more robust error handling
+- Stricter TypeScript types
+- Improve loading state
+- User creation and management (password hashing, etc.)
