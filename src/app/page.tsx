@@ -39,13 +39,13 @@ export default function Home() {
           <h1 className="text-3xl font-bold mb-6">Featured Artists</h1>
 
           {artists.length === 0 ? (
-            <p className="text-gray-500">No artists available</p>
+            <p className="text-red-500">No artists available</p>
           ) : (
             <ul className="space-y-3">
               {artists.map((artist) => (
                 <li key={artist.id} className="border p-4 rounded">
                   {session ? (
-                    <Link href={`/artist/${artist.id}`} className="text-blue-600 hover:underline text-lg">
+                    <Link href={`/artist/${artist.id}`} className="text-foreground hover:underline text-lg">
                       {artist.name}
                     </Link>
                   ) : (

@@ -1,63 +1,76 @@
-'use client'
+"use client";
 
-import { use, useEffect, useState } from 'react'
-import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
-import Link from 'next/link'
+import { use, useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface ArtistData {
-  name: string
-  image: string | null
-  genres: string[]
+  name: string;
+  image: string | null;
+  genres: string[];
 }
 
-export default function ArtistPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params)
-  const { data: session, status } = useSession()
-  const router = useRouter()
-  const [artist, setArtist] = useState<ArtistData | null>(null)
+export default function ArtistPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = use(params);
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const [artist, setArtist] = useState<ArtistData | null>(null);
 
   useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/login')
+    if (status === "unauthenticated") {
+      router.push("/login");
     }
-  }, [status, router])
+  }, [status, router]);
 
   useEffect(() => {
     if (session) {
-      fetchArtist()
+      fetchArtist();
     }
-  }, [session])
+  }, [session]);
 
   const fetchArtist = async () => {
-    const res = await fetch(`/api/spotify/${id}`)
-    const data = await res.json()
-    setArtist(data)
-  }
+    const res = await fetch(`/api/spotify/${id}`);
+    const data = await res.json();
+    setArtist(data);
+  };
 
-  if (status === 'loading') {
-    return <div>Loading...</div>
+  if (status === "loading") {
+    return <div>Loading...</div>;
   }
 
   if (!session) {
-    return null
+    return null;
   }
 
   if (!artist) {
-    return <div>Loading artist...</div>
+    return <div>Loading artist...</div>;
   }
 
   return (
     <div className="min-h-screen p-8">
       <div className="max-w-2xl mx-auto bg-background-s p-6 rounded shadow">
-        <Link href="/" className="text-blue-600 hover:underline mb-4 inline-block">
-           Back to Artists
-        </Link>
+        <div className="bg-blue-600 border-md inline p-3 rounded-md">
+          <Link
+            href="/"
+            className="text-foreground hover:underline mb-4 inline-block"
+          >
+            Back to Artists
+          </Link>
+        </div>
 
         <h1 className="text-3xl font-bold mb-4">{artist.name}</h1>
 
         {artist.image && (
-          <img src={artist.image} alt={artist.name} className="w-full max-w-md mb-4 rounded" />
+          <img
+            src={artist.image}
+            alt={artist.name}
+            className="w-full max-w-md mb-4 rounded"
+          />
         )}
 
         <div>
@@ -76,5 +89,5 @@ export default function ArtistPage({ params }: { params: Promise<{ id: string }>
         </div>
       </div>
     </div>
-  )
+  );
 }
