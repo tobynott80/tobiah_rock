@@ -11,7 +11,7 @@ npm install
 
 2. Get Spotify API credentials from https://developer.spotify.com/dashboard
 
-3. Update `.env.local` with your credentials
+3. Create `.env.local` with your credentials using the `.env.example` as a template.
 
 4. Run the dev server:
 ```bash
