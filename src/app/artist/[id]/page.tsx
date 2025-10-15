@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -11,7 +11,8 @@ interface ArtistData {
   genres: string[]
 }
 
-export default function ArtistPage({ params }: { params: { id: string } }) {
+export default function ArtistPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
   const { data: session, status } = useSession()
   const router = useRouter()
   const [artist, setArtist] = useState<ArtistData | null>(null)
@@ -29,7 +30,7 @@ export default function ArtistPage({ params }: { params: { id: string } }) {
   }, [session])
 
   const fetchArtist = async () => {
-    const res = await fetch(`/api/spotify/${params.id}`)
+    const res = await fetch(`/api/spotify/${id}`)
     const data = await res.json()
     setArtist(data)
   }
