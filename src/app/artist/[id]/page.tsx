@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { use, useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { use, useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 interface ArtistData {
   name: string;
@@ -22,8 +22,8 @@ export default function ArtistPage({
   const [artist, setArtist] = useState<ArtistData | null>(null);
 
   useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/login");
+    if (status === 'unauthenticated') {
+      router.push('/login');
     }
   }, [status, router]);
 
@@ -39,7 +39,7 @@ export default function ArtistPage({
     setArtist(data);
   };
 
-  if (status === "loading") {
+  if (status === 'loading') {
     return <div>Loading...</div>;
   }
 
@@ -52,39 +52,39 @@ export default function ArtistPage({
   }
 
   return (
-    <div className="min-h-screen p-8">
-      <div className="max-w-2xl mx-auto bg-background-s p-6 rounded shadow">
-        <div className="bg-blue-600 border-md inline p-3 rounded-md">
+    <div className='min-h-screen p-8'>
+      <div className='max-w-2xl mx-auto bg-background-s p-6 rounded shadow'>
+        <div className='bg-blue-600 border-md inline p-3 rounded-md'>
           <Link
-            href="/"
-            className="text-foreground hover:underline mb-4 inline-block"
+            href='/'
+            className='text-foreground hover:underline mb-4 inline-block'
           >
             Back to Artists
           </Link>
         </div>
 
-        <h1 className="text-3xl font-bold mb-4">{artist.name}</h1>
+        <h1 className='text-3xl font-bold mb-4'>{artist.name}</h1>
 
         {artist.image && (
           <img
             src={artist.image}
             alt={artist.name}
-            className="w-full max-w-md mb-4 rounded"
+            className='w-full max-w-md mb-4 rounded'
           />
         )}
 
         <div>
-          <h2 className="text-xl font-bold mb-2">Genres</h2>
+          <h2 className='text-xl font-bold mb-2'>Genres</h2>
           {artist.genres.length > 0 ? (
-            <ul className="list-disc list-inside">
+            <ul className='list-disc list-inside'>
               {artist.genres.map((genre) => (
-                <li key={genre} className="text-foreground">
+                <li key={genre} className='text-foreground'>
                   {genre}
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="text-gray-500">No genres available</p>
+            <p className='text-gray-500'>No genres available</p>
           )}
         </div>
       </div>
