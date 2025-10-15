@@ -19,12 +19,13 @@ async function getSpotifyToken() {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { artistId: string } }
+  { params }: { params: Promise<{ artistId: string }> }
 ) {
+  const { artistId } = await params
   try {
     const token = await getSpotifyToken()
 
-    const response = await fetch(`https://api.spotify.com/v1/artists/${params.artistId}`, {
+    const response = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
