@@ -18,6 +18,17 @@ npm install
 npm run dev
 ```
 
+### Production
+
+1. Build the app:
+```bash
+npm run build
+```
+2. Start the app:
+```bash
+npm start
+```
+
 ## Usage
 
 - Login with default username: `admin` and password: `password`
