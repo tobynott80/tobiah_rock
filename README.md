@@ -70,3 +70,4 @@ npm start
 - User creation and management (password hashing, etc.)
 - Caching of Spotify API responses to reduce load times and API calls
 - Option to disable/customise 20 artist limit
+- Refactor UI into smaller components for better maintainability & reusability
