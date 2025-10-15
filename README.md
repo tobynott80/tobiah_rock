@@ -36,8 +36,30 @@ npm start
 - Artist IDs can be found in Spotify URLs (e.g., Steve Miller Band: `6QtGlUje9TIkLrgPZrESuk`)
 - Max 20 artists
 
+## Approach
 
-## Future Improvements
+### Tech Choices
+- Next.js 15 with TypeScript
+- NextAuth for authentication (simple credentials provider)
+- Tailwind CSS for styling
+- File-based storage (JSON file) for artist IDs
+- Spotify Web API for artist data
+
+### Assumptions
+- Single admin user is sufficient
+- Artist IDs stored in a local JSON file
+- No need for a database
+- Artist data fetched from Spotify API on each page load
+- Basic UI is acceptable
+
+### Architecture
+- API routes handle Spotify authentication and data storage
+- Client components for interactive features
+- Session management with NextAuth
+- Protected routes redirect to login if not authenticated
+
+
+### Future Improvements
 
 - Improve UI (ideally using library like ant design)
 - Use a database for storing artists instead of json file
@@ -46,3 +68,4 @@ npm start
 - Stricter TypeScript types
 - Improve loading state
 - User creation and management (password hashing, etc.)
+- Caching of Spotify API responses to reduce load times and API calls
