@@ -33,9 +33,9 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen p-8 bg-gray-100">
+    <div className="min-h-screen p-8 ">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white p-6 rounded shadow">
+        <div className="bg-background-s p-6 rounded shadow">
           <h1 className="text-3xl font-bold mb-6">Featured Artists</h1>
 
           {artists.length === 0 ? (

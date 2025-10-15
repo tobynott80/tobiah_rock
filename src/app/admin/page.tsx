@@ -61,8 +61,8 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen p-8 bg-gray-100">
-      <div className="max-w-2xl mx-auto bg-white p-6 rounded shadow">
+    <div className="min-h-screen p-8">
+      <div className="max-w-2xl mx-auto bg-background-s p-6 rounded shadow">
         <h1 className="text-2xl font-bold mb-4">Manage Artists</h1>
 
         <form onSubmit={handleAdd} className="mb-6">

@@ -48,8 +48,8 @@ export default function ArtistPage({ params }: { params: Promise<{ id: string }>
   }
 
   return (
-    <div className="min-h-screen p-8 bg-gray-100">
-      <div className="max-w-2xl mx-auto bg-white p-6 rounded shadow">
+    <div className="min-h-screen p-8">
+      <div className="max-w-2xl mx-auto bg-background-s p-6 rounded shadow">
         <Link href="/" className="text-blue-600 hover:underline mb-4 inline-block">
            Back to Artists
         </Link>
@@ -65,7 +65,7 @@ export default function ArtistPage({ params }: { params: Promise<{ id: string }>
           {artist.genres.length > 0 ? (
             <ul className="list-disc list-inside">
               {artist.genres.map((genre) => (
-                <li key={genre} className="text-gray-700">
+                <li key={genre} className="text-foreground">
                   {genre}
                 </li>
               ))}
